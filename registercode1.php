@@ -6,24 +6,12 @@ include 'db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate input
     $full_name      = trim($_POST['full_name']);
-    // $apartment_name = trim($_POST['apartment_name']);
-
-        $apartment_sel   = trim($_POST['apartment_name']  ?? '');
-    $other_apartment = trim($_POST['other_apartment'] ?? '');
-
+    $apartment_name = trim($_POST['apartment_name']);
     $pin_code       = trim($_POST['pin_code']);
     $address        = trim($_POST['address']);
     $email          = trim($_POST['email']);
     $phone          = trim($_POST['phone']);
     $password_input = $_POST['password'];
-
-
-
-       /* Resolve final apartment name */
-    $apartment_name = ($apartment_sel === '__other__')
-                      ? $other_apartment
-                      : $apartment_sel;
-
 
     // Validate phone number (10 digits)
     if (!preg_match('/^\d{10}$/', $phone)) {

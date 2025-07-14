@@ -73,31 +73,17 @@
 
 
   
-<?php
-include 'db.php'; // Ensure this is the correct path to your DB connection
-$result = $conn->query("SELECT * FROM apartment_names ORDER BY name ASC");
-?>
-
+  <!-- Register Form -->
 <!-- Register Form -->
 <div id="registerForm" class="form_section">
   <h2>Register</h2>
   <form action="registercode.php" method="POST">
     <input type="text" name="full_name" placeholder="Name" required />
-
-    <!-- Apartment Dropdown -->
-    <select name="apartment_name" required>
-      <option value="">Select Apartment</option>
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <option value="<?= htmlspecialchars($row['name']) ?>">
-          <?= htmlspecialchars($row['name']) ?>
-        </option>
-      <?php endwhile; ?>
-    </select>
-
+    <input type="text" name="apartment_name" placeholder="Apartment Name" required />
     <input type="text" name="pin_code" placeholder="Pin Code" required />
     <textarea name="address" placeholder="Address" rows="2" required></textarea>
     <input type="email" name="email" placeholder="Email" required />
-    <input type="number" name="phone" placeholder="Phone Number" required />
+        <input type="number" name="phone" placeholder="Phone Number" required />
     <input type="password" name="password" placeholder="Create Password" required />
     <button type="submit" class="login_btn">Register</button>
   </form>
@@ -105,7 +91,6 @@ $result = $conn->query("SELECT * FROM apartment_names ORDER BY name ASC");
     Already have an account? <a onclick="toggleForm('login')">Login</a>
   </div>
 </div>
-
 
 
 
